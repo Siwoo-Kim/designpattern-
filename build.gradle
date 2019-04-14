@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'siwoo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'junit', name: 'junit', version: '4.12'
+}
