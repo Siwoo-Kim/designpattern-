@@ -9,6 +9,7 @@ import org.junit.matchers.JUnitMatchers;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Stack;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.hasItems;
@@ -25,6 +26,7 @@ public class LinkedListMain {
         Employee marry = new Employee(22L, "Mary", "Smith");
         Employee mike = new Employee(3245L, "Mike", "Wilson");
         Employee bill = new Employee(78L, "Bill", "End");
+
 
         LinkedList<Employee> employees = new LinkedListImpl<>();
         assertTrue(employees.isEmpty());

@@ -1,10 +1,12 @@
 package com.siwoo.datastructure.linkedlist;
 
+import com.siwoo.datastructure.stack.Stack;
+
 import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListImpl<E> implements LinkedList<E> {
+public class LinkedListImpl<E> implements LinkedList<E>, Stack<E> {
     //top element (the most recent element) of the list.
     private Node<E> last;
     private Node<E> first;
@@ -96,8 +98,30 @@ public class LinkedListImpl<E> implements LinkedList<E> {
     }
 
     @Override
+    public boolean isEmpty() {
+        return last == null;
+    }
+
+    @Override
+    public void push(E item) {
+        addLast(item);
+    }
+
+    @Override
+    public E pop() {
+        return removeLast();
+    }
+
+    @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public E peek() {
+        if (isEmpty())
+            throw new NoSuchElementException();
+        return last.el;
     }
 
     @Override
