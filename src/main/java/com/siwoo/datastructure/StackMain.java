@@ -45,6 +45,7 @@ public class StackMain {
         System.out.println("====================");
         printEmployeesArray(linkedEmployees.toArray(new Employee[0]));
         printEmployeesArray(employees.toArray(new Employee[0]));
+
     }
 
     private static void printEmployeesArray(Employee[] employees) {

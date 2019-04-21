@@ -2,12 +2,11 @@ package com.siwoo.datastructure.stack;
 
 import java.lang.reflect.Array;
 import java.util.EmptyStackException;
-import java.util.NoSuchElementException;
 
 public class ArrayStack<E> implements Stack<E> {
     private static final int MIN_INITIAL_CAPACITY = 8;
     private Object[] elements;
-    private int head;
+    private int top;
 
     public ArrayStack() {
         this(MIN_INITIAL_CAPACITY);
@@ -19,10 +18,10 @@ public class ArrayStack<E> implements Stack<E> {
 
     @Override
     public void push(E item) {
-        if (head == elements.length) {
+        if (top == elements.length) {
             doubleCapacity();
         }
-        elements[head++] = item;
+        elements[top++] = item;
     }
 
     private void doubleCapacity() {
@@ -33,32 +32,35 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public E pop() {
         if (isEmpty())
             throw new EmptyStackException();
-        final E el = (E) elements[--head];
-        elements[head] = null;
+        final E el = (E) elements[--top];
+        elements[top] = null;
         return el;
     }
 
     @Override
     public int size() {
-        return head;
+        return top;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public E peek() {
         if (isEmpty())
             throw new EmptyStackException();
-        return (E) elements[head - 1];
+        return (E) elements[top - 1];
     }
 
     @Override
     public boolean isEmpty() {
-        return head == 0;
+        return top == 0;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T[] toArray(T[] a) {
         int size = size();
         if (a.length < size)
